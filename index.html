@@ -11,12 +11,10 @@
       margin: 0;
       background: black;
 
-      /* Disable selection */
+      /* Disable selection & long-press */
       -webkit-user-select: none;
       -moz-user-select: none;
       user-select: none;
-
-      /* Disable long-press menu on mobile */
       -webkit-touch-callout: none;
     }
 
@@ -25,12 +23,13 @@
       margin: 0 auto;
     }
 
-    img {
+    /* Each panel is one image */
+    .panel {
       width: 100%;
-      display: block;
-
-      /* Disable dragging */
-      pointer-events: none;
+      aspect-ratio: 9 / 16;   /* Vertical comic ratio */
+      background-size: cover;
+      background-position: center top;
+      background-repeat: no-repeat;
     }
   </style>
 </head>
@@ -38,28 +37,16 @@
 <body>
 
   <div class="comic">
-    <img src="images/ch01_001.jpg" alt="">
-    <img src="images/ch01_002.jpg" alt="">
-    <img src="images/ch01_003.jpg" alt="">
-    <img src="images/ch01_004.jpg" alt="">
-    <img src="images/ch01_005.jpg" alt="">
-    <img src="images/ch01_006.jpg" alt="">
-    <img src="images/ch01_007.jpg" alt="">
+    <div class="panel" style="background-image: url('images/ch01_001.jpg');"></div>
+    <div class="panel" style="background-image: url('images/ch01_002.jpg');"></div>
+    <div class="panel" style="background-image: url('images/ch01_003.jpg');"></div>
+    <div class="panel" style="background-image: url('images/ch01_004.jpg');"></div>
+    <div class="panel" style="background-image: url('images/ch01_005.jpg');"></div>
+    <div class="panel" style="background-image: url('images/ch01_006.jpg');"></div>
+    <div class="panel" style="background-image: url('images/ch01_007.jpg');"></div>
   </div>
 
   <script>
     // Disable right-click
     document.addEventListener("contextmenu", function(e) {
-      e.preventDefault();
-    });
-
-    // Extra mobile protection (blocks multi-touch tricks)
-    document.addEventListener("touchstart", function(e) {
-      if (e.touches.length > 1) {
-        e.preventDefault();
-      }
-    }, { passive: false });
-  </script>
-
-</body>
-</html>
+      e.pr

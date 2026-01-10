@@ -10,6 +10,14 @@
     body {
       margin: 0;
       background: black;
+
+      /* Disable selection */
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+
+      /* Disable long-press menu on mobile */
+      -webkit-touch-callout: none;
     }
 
     .comic {
@@ -20,6 +28,9 @@
     img {
       width: 100%;
       display: block;
+
+      /* Disable dragging */
+      pointer-events: none;
     }
   </style>
 </head>
@@ -34,10 +45,21 @@
     <img src="images/ch01_005.jpg" alt="">
     <img src="images/ch01_006.jpg" alt="">
     <img src="images/ch01_007.jpg" alt="">
-    <img src="images/ch01_009.jpg" alt="">
-    <img src="images/ch01_010.jpg" alt="">
-    <img src="images/ch01_011.jpg" alt="">
   </div>
+
+  <script>
+    // Disable right-click
+    document.addEventListener("contextmenu", function(e) {
+      e.preventDefault();
+    });
+
+    // Extra mobile protection (blocks multi-touch tricks)
+    document.addEventListener("touchstart", function(e) {
+      if (e.touches.length > 1) {
+        e.preventDefault();
+      }
+    }, { passive: false });
+  </script>
 
 </body>
 </html>

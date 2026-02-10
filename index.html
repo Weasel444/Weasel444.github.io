@@ -2,14 +2,21 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- LOCK ZOOM -->
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
   <title>Chapter 01</title>
 
   <style>
-    body {
+    html, body {
       margin: 0;
+      padding: 0;
       background: black;
+
+      /* Disable zoom gestures, allow vertical scroll */
+      touch-action: pan-y;
 
       /* Disable selection & long-press */
       -webkit-user-select: none;
@@ -26,14 +33,12 @@
     /* Each panel is one image */
     .panel {
       width: 100%;
+      aspect-ratio: 1 / 1;
+
       background-size: contain;
       background-position: center top;
       background-repeat: no-repeat;
       background-color: black;
-    
-      /* 1:1 square panels */
-      aspect-ratio: 1 / 1;
-      
     }
   </style>
 </head>
@@ -51,6 +56,21 @@
   </div>
 
   <script>
-    // Disable right-click
+    // Disable right-click / long-press menu
     document.addEventListener("contextmenu", function(e) {
-      e.pr
+      e.preventDefault();
+    });
+
+    // Disable double-tap zoom (iOS Safari)
+    let lastTouchEnd = 0;
+    document.addEventListener('touchend', function (event) {
+      const now = Date.now();
+      if (now - lastTouchEnd <= 300) {
+        event.preventDefault();
+      }
+      lastTouchEnd = now;
+    }, false);
+  </script>
+
+</body>
+</html>

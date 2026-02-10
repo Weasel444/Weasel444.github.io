@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <!-- LOCK ZOOM -->
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+  <title>Chapter 03</title>
+
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: black;
+
+      /* Disable zoom gestures, allow vertical scroll */
+      touch-action: pan-y;
+
+      /* Disable selection & long-press */
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+      -webkit-touch-callout: none;
+    }
+
+    .comic {
+      max-width: 480px;
+      margin: 0 auto;
+    }
+
+    /* Each panel is one image */
+    .panel {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+
+      background-size: contain;
+      background-position: center top;
+      background-repeat: no-repeat;
+      background-color: black;
+    }
+
+    /* NEXT CHAPTER BUTTON */
+    .next-chapter {
+      display: block;
+      margin: 40px auto 60px;
+      padding: 18px 0;
+
+      width: 100%;
+      max-width: 480px;
+
+      text-align: center;
+      text-decoration: none;
+      font-size: 18px;
+      font-weight: 500;
+
+      color: white;
+      border-top: 1px solid #333;
+
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .next-chapter:hover {
+      opacity: 0.7;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="comic">
+    <div class="panel" style="background-image: url('images/ch01_001.jpg');"></div>
+    <div class="panel" style="background-image: url('images/ch01_002.jpg');"></div>
+
+    <!-- PATREON LINK -->
+    <a href="https://www.patreon.com/desmira"
+       class="next-chapter"
+       target="_blank"
+       rel="noopener">
+      Go to Patreon
+    </a>
+
+  </div>
+
+  <script>
+    // Disable right-click / long-press menu
+    document.addEventListener("contextmenu", function(e) {
+      e.preventDefault();
+    });
+
+    // Disable double-tap zoom (iOS Safari)
+    let lastTouchEnd = 0;
+    document.addEventListener('touchend', function (event) {
+      const now = Date.now();
+      if (now - lastTouchEnd <= 300) {
+        event.preventDefault();
+      }
+      lastTouchEnd = now;
+    }, false);
+  </script>
+
+</body>
+</html>

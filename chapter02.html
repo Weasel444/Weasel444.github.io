@@ -9,11 +9,19 @@
 
   <title>Chapter 02</title>
 
+  <!-- GOOGLE FONT: LATO REGULAR + BOLD -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+
   <style>
     html, body {
       margin: 0;
       padding: 0;
       background: black;
+
+      font-family: 'Lato', sans-serif;
+      font-weight: 400;
 
       /* Disable zoom gestures, allow vertical scroll */
       touch-action: pan-y;
@@ -28,6 +36,7 @@
     .comic {
       max-width: 480px;
       margin: 0 auto;
+      text-align: center;
     }
 
     /* Each panel is one image */
@@ -52,24 +61,32 @@
     .nav-button {
       flex: 1;
       padding: 18px 0;
-    
+
       text-align: center;
       text-decoration: none;
-      font-size: 16px;
-      font-weight: 500;
-    
-      background-color: #2E2F4C;
+      font-size: 18px;
+      font-weight: 700; /* Bold */
+
+      background-color: #50528d;
       color: white;
       border-radius: 6px;
-    
+
       -webkit-tap-highlight-color: transparent;
       transition: opacity 0.2s ease;
     }
-    
+
     .nav-button:hover {
       opacity: 0.85;
     }
 
+    /* Less bright Previous button */
+    .nav-button.previous {
+      background-color: #3e406f; /* Slightly darker / softer */
+      opacity: 0.85;
+    }
+
+    .nav-button.previous:hover {
+      opacity: 0.75;
     }
   </style>
 </head>
@@ -82,7 +99,7 @@
 
     <!-- PREVIOUS / NEXT NAVIGATION -->
     <div class="chapter-nav">
-      <a href="index.html" class="nav-button">
+      <a href="index.html" class="nav-button previous">
         ← Previous
       </a>
 
@@ -93,12 +110,10 @@
   </div>
 
   <script>
-    // Disable right-click / long-press menu
     document.addEventListener("contextmenu", function(e) {
       e.preventDefault();
     });
 
-    // Disable double-tap zoom (iOS Safari)
     let lastTouchEnd = 0;
     document.addEventListener('touchend', function (event) {
       const now = Date.now();

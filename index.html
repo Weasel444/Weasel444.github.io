@@ -9,11 +9,19 @@
 
   <title>Chapter 01</title>
 
+  <!-- GOOGLE FONT: LATO REGULAR + BOLD -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+
   <style>
     html, body {
       margin: 0;
       padding: 0;
       background: black;
+
+      font-family: 'Lato', sans-serif;
+      font-weight: 400;
 
       /* Disable zoom gestures, allow vertical scroll */
       touch-action: pan-y;
@@ -28,6 +36,7 @@
     .comic {
       max-width: 480px;
       margin: 0 auto;
+      text-align: center;
     }
 
     /* Each panel is one image */
@@ -42,24 +51,25 @@
     }
 
     /* NEXT CHAPTER BUTTON */
-    .nav-button {
-      flex: 1;
-      padding: 18px 0;
-    
+    .next-chapter {
+      display: inline-block;
+      margin: 40px auto 60px;
+      padding: 18px 28px;
+
       text-align: center;
       text-decoration: none;
-      font-size: 16px;
-      font-weight: 500;
-    
-      background-color: #2E2F4C;
+      font-size: 18px;
+      font-weight: 700; /* Bold */
+
+      background-color: #50528d;
       color: white;
       border-radius: 6px;
-    
+
       -webkit-tap-highlight-color: transparent;
       transition: opacity 0.2s ease;
     }
-    
-    .nav-button:hover {
+
+    .next-chapter:hover {
       opacity: 0.85;
     }
   </style>

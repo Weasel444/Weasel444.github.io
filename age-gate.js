@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function () {
       <h2>Are you 18 years or older?</h2>
       <p>This comic contains nudity and sexual content</p>
 
-      <button class="age-confirm">I am 18 or older</button>
+      <button class="age-confirm">I am 18+ and want to continue</button>
     </div>
   `;
 

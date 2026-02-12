@@ -1,5 +1,5 @@
 /* OVERLAY (full screen background) */
-.age-overlay {
+#age-overlay {
   position: fixed;
   inset: 0;
   background: black;

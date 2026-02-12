@@ -20,8 +20,9 @@ body {
 
 /* POPUP CARD */
 .age-popup {
-  width: 90%;
+  width: calc(100% - 40px); /* 20px space left + right */
   max-width: 420px;
+
   text-align: center;
   background: white;
   padding: 30px 25px 35px;
@@ -30,11 +31,13 @@ body {
 
 /* CHARACTER IMAGE */
 .age-popup img {
-  width: 100%;
+  width: 75%;
+  max-width: 240px;
   height: auto;
-  border-radius: 6px;
-  margin-bottom: 20px;
+  margin: 0 auto 20px;
+  display: block;
 }
+
 
 /* MAIN QUESTION */
 .age-popup h2 {

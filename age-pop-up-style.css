@@ -60,21 +60,27 @@ body {
 /* BUTTON */
 .age-confirm {
   display: inline-block;
-  padding: 16px 28px;
+  padding: 18px 28px;
 
   font-family: 'Lato', sans-serif;
   font-weight: 700;
-  font-size: 16px;
+  font-size: 18px;
 
   background-color: #50528d;
   color: white;
   border-radius: 6px;
-  text-decoration: none;
-  cursor: pointer;
 
+  border: none;
+  box-shadow: none;       /* remove shadow */
+  outline: none;          /* remove focus glow */
+  appearance: none;       /* remove default styling */
+  -webkit-appearance: none;
+
+  cursor: pointer;
   transition: opacity 0.2s ease;
 }
 
 .age-confirm:hover {
   opacity: 0.85;
 }
+

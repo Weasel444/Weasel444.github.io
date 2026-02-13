@@ -14,9 +14,6 @@
 
   z-index: 9999;
 }
-body {
-  overflow: hidden;
-}
 
 /* POPUP CARD */
 .age-popup {

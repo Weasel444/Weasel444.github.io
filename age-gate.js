@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   overlay.innerHTML = `
     <div class="age-popup">
-      <img src="images/Nethaniel_warning.jpg" alt="Warning">
+      <img src="images/Age_warning_chibi.jpg" alt="Warning">
 
       <h2>Are you 18 years or older?</h2>
       <p>This comic contains nudity and sexual content</p>

@@ -166,5 +166,17 @@
   <!-- AGE POPUP SCRIPT -->
   <script src="age-gate.js"></script>
 
+  <!-- SCRIPT TO ADJUST PANEL HEIGHTS -->
+  <script>
+    document.querySelectorAll('.panel').forEach(panel => {
+      const img = new Image();
+      img.src = panel.style.backgroundImage.slice(5, -2); // remove url("…")
+      img.onload = () => {
+        const ratio = img.height / img.width;
+        panel.style.height = `${panel.offsetWidth * ratio}px`;
+      };
+    });
+  </script>
+
 </body>
 </html>

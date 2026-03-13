@@ -7,7 +7,7 @@
   <meta name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
-  <title>Chapter 03</title>
+  <title>Chapter 07</title>
 
   <!-- GOOGLE FONT: LATO REGULAR + BOLD -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -53,7 +53,7 @@
     /* PATREON BUTTON (BOLD) */
     .next-chapter {
       display: inline-block;
-      margin: 40px auto 60px;
+      margin: 0px auto 60px;
       padding: 18px 28px;
 
       text-align: center;
@@ -78,8 +78,25 @@
 <body>
 
   <div class="comic">
-    <div class="panel" style="background-image: url('images/ch01_001.jpg');"></div>
-    <div class="panel" style="background-image: url('images/ch01_002.jpg');"></div>
+    <div id="chapter07-container"></div>
+    
+    <script>
+      const container = document.getElementById('chapter07-container');
+      const totalImages = 31;
+    
+      for (let i = 1; i <= totalImages; i++) {
+        // Pad the number to 3 digits, e.g., 001, 002
+        const num = String(i).padStart(3, '0');
+    
+        // Create a div element
+        const panel = document.createElement('div');
+        panel.className = 'panel';
+        panel.style.backgroundImage = `url('Chapter 07/Chapter 07_${num}.jpg')`;
+    
+        // Append it to the container
+        container.appendChild(panel);
+      }
+    </script>
 
     <a href="https://www.patreon.com/desmira"
        class="next-chapter"

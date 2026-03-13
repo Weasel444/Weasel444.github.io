@@ -97,51 +97,26 @@
 <body>
 
   <div class="comic">
-    <div class="panel" style="background-image: url('Chapter 02/Chapter 02_001.jpg');"></div>
-    <div class="panel" style="background-image: url('Chapter 02/Chapter 02_002.jpg');"></div>
-    <div class="panel" style="background-image: url('Chapter 02/Chapter 02_003.jpg');"></div>
-    <div class="panel" style="background-image: url('Chapter 02/Chapter 02_004.jpg');"></div>
-    <div class="panel" style="background-image: url('Chapter 02/Chapter 02_005.jpg');"></div>
-    <div class="panel" style="background-image: url('Chapter 02/Chapter 02_006.jpg');"></div>
-    <div class="panel" style="background-image: url('Chapter 02/Chapter 02_007.jpg');"></div>
-    <div class="panel" style="background-image: url('Chapter 02/Chapter 02_008.jpg');"></div>
-    <div class="panel" style="background-image: url('Chapter 02/Chapter 02_009.jpg');"></div>
-    <div class="panel" style="background-image: url('Chapter 02/Chapter 02_010.jpg');"></div>
-    <div class="panel" style="background-image: url('Chapter 02/Chapter 02_011.jpg');"></div>
-    <div class="panel" style="background-image: url('Chapter 02/Chapter 02_012.jpg');"></div>
-    <div class="panel" style="background-image: url('Chapter 02/Chapter 02_013.jpg');"></div>
-    <div class="panel" style="background-image: url('Chapter 02/Chapter 02_014.jpg');"></div>
-    <div class="panel" style="background-image: url('Chapter 02/Chapter 02_015.jpg');"></div>
-    <div class="panel" style="background-image: url('Chapter 02/Chapter 02_016.jpg');"></div>
-    <div class="panel" style="background-image: url('Chapter 02/Chapter 02_017.jpg');"></div>
-    <div class="panel" style="background-image: url('Chapter 02/Chapter 02_018.jpg');"></div>
-    <div class="panel" style="background-image: url('Chapter 02/Chapter 02_019.jpg');"></div>
-    <div class="panel" style="background-image: url('Chapter 02/Chapter 02_020.jpg');"></div>
-    <div class="panel" style="background-image: url('Chapter 02/Chapter 02_021.jpg');"></div>
-    <div class="panel" style="background-image: url('Chapter 02/Chapter 02_022.jpg');"></div>
-    <div class="panel" style="background-image: url('Chapter 02/Chapter 02_023.jpg');"></div>
-    <div class="panel" style="background-image: url('Chapter 02/Chapter 02_024.jpg');"></div>
-    <div class="panel" style="background-image: url('Chapter 02/Chapter 02_025.jpg');"></div>
-    <div class="panel" style="background-image: url('Chapter 02/Chapter 02_026.jpg');"></div>
-    <div class="panel" style="background-image: url('Chapter 02/Chapter 02_027.jpg');"></div>
-    <div class="panel" style="background-image: url('Chapter 02/Chapter 02_028.jpg');"></div>
-    <div class="panel" style="background-image: url('Chapter 02/Chapter 02_029.jpg');"></div>
-    <div class="panel" style="background-image: url('Chapter 02/Chapter 02_030.jpg');"></div>
-    <div class="panel" style="background-image: url('Chapter 02/Chapter 02_031.jpg');"></div>
-    <div class="panel" style="background-image: url('Chapter 02/Chapter 02_032.jpg');"></div>
-    <div class="panel" style="background-image: url('Chapter 02/Chapter 02_033.jpg');"></div>
-    <div class="panel" style="background-image: url('Chapter 02/Chapter 02_034.jpg');"></div>
-    <div class="panel" style="background-image: url('Chapter 02/Chapter 02_035.jpg');"></div>
-    <div class="panel" style="background-image: url('Chapter 02/Chapter 02_036.jpg');"></div>
-    <div class="panel" style="background-image: url('Chapter 02/Chapter 02_037.jpg');"></div>
-    <div class="panel" style="background-image: url('Chapter 02/Chapter 02_038.jpg');"></div>
-    <div class="panel" style="background-image: url('Chapter 02/Chapter 02_039.jpg');"></div>
-    <div class="panel" style="background-image: url('Chapter 02/Chapter 02_040.jpg');"></div>
-    <div class="panel" style="background-image: url('Chapter 02/Chapter 02_041.jpg');"></div>
-    <div class="panel" style="background-image: url('Chapter 02/Chapter 02_042.jpg');"></div>
-    <div class="panel" style="background-image: url('Chapter 02/Chapter 02_043.jpg');"></div>
-    <div class="panel" style="background-image: url('Chapter 02/Chapter 02_044.jpg');"></div>
-
+    <div id="chapter02-container"></div>
+    
+    <script>
+      const container = document.getElementById('chapter02-container');
+      const totalImages = 44;
+    
+      for (let i = 1; i <= totalImages; i++) {
+        // Pad the number to 3 digits, e.g., 001, 002
+        const num = String(i).padStart(3, '0');
+    
+        // Create a div element
+        const panel = document.createElement('div');
+        panel.className = 'panel';
+        panel.style.backgroundImage = `url('Chapter 02/Chapter 02_${num}.jpg')`;
+    
+        // Append it to the container
+        container.appendChild(panel);
+      }
+    </script>
+    
     <!-- PREVIOUS / NEXT NAVIGATION -->
     <div class="chapter-nav">
       <a href="index.html" class="nav-button previous">

@@ -4,8 +4,7 @@
   <meta charset="UTF-8">
 
   <!-- LOCK ZOOM -->
-  <meta name="viewport"
-        content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
   <title>Chapter 02</title>
 
@@ -45,12 +44,11 @@
     /* Each panel is one image */
     .panel {
       width: 100%;
-      aspect-ratio: 1 / 1;
-
       background-size: contain;
       background-position: center top;
       background-repeat: no-repeat;
       background-color: black;
+      margin-bottom: 1em;
     }
 
     /* Chapter navigation (prev / next) */
@@ -68,7 +66,7 @@
       text-align: center;
       text-decoration: none;
       font-size: 18px;
-      font-weight: 700; /* Bold */
+      font-weight: 700;
 
       background-color: #50528d;
       color: white;
@@ -82,9 +80,8 @@
       opacity: 0.85;
     }
 
-    /* Less bright Previous button */
     .nav-button.previous {
-      background-color: #3e406f; /* Slightly darker / softer */
+      background-color: #3e406f;
       opacity: 0.85;
     }
 
@@ -98,66 +95,61 @@
 
   <div class="comic">
     <div id="chapter02-container"></div>
-    
-    <script>
-      const container = document.getElementById('chapter02-container');
-      const totalImages = 44;
-    
-      for (let i = 1; i <= totalImages; i++) {
-        // Pad the number to 3 digits, e.g., 001, 002
-        const num = String(i).padStart(3, '0');
-    
-        // Create a div element
-        const panel = document.createElement('div');
-        panel.className = 'panel';
-        panel.style.backgroundImage = `url('Chapter 02/Chapter 02_${num}.jpg')`;
-    
-        // Append it to the container
-        container.appendChild(panel);
-      }
-    </script>
-    
+
     <!-- PREVIOUS / NEXT NAVIGATION -->
     <div class="chapter-nav">
-      <a href="index.html" class="nav-button previous">
-        ← Previous
-      </a>
-
-      <a href="chapter03.html" class="nav-button">
-        Next →
-      </a>
+      <a href="index.html" class="nav-button previous">← Previous</a>
+      <a href="chapter03.html" class="nav-button">Next →</a>
     </div>
   </div>
-
-  <script>
-    document.addEventListener("contextmenu", function(e) {
-      e.preventDefault();
-    });
-
-    let lastTouchEnd = 0;
-    document.addEventListener('touchend', function (event) {
-      const now = Date.now();
-      if (now - lastTouchEnd <= 300) {
-        event.preventDefault();
-      }
-      lastTouchEnd = now;
-    }, false);
-  </script>
 
   <!-- AGE POPUP SCRIPT -->
   <script src="age-gate.js"></script>
 
-  <!-- SCRIPT TO ADJUST PANEL HEIGHTS -->
   <script>
-    document.querySelectorAll('.panel').forEach(panel => {
-      const img = new Image();
-      img.src = panel.style.backgroundImage.slice(5, -2); // remove url("…")
-      img.onload = () => {
-        const ratio = img.height / img.width;
-        panel.style.height = `${panel.offsetWidth * ratio}px`;
-      };
-    });
+    // Generate panels
+    const container = document.getElementById('chapter02-container');
+    const totalImages = 44;
+    const panels = [];
+
+    for (let i = 1; i <= totalImages; i++) {
+      const num = String(i).padStart(3, '0');
+      const panel = document.createElement('div');
+      panel.className = 'panel';
+      panel.style.backgroundImage = `url('Chapter 02/Chapter 02_${num}.jpg')`;
+      container.appendChild(panel);
+      panels.push(panel);
+    }
+
+    // Function to adjust panel heights based on image ratio
+    function adjustPanelHeights() {
+      panels.forEach(panel => {
+        const img = new Image();
+        img.src = panel.style.backgroundImage.replace(/^url\(["']?/, '').replace(/["']?\)$/, '');
+        img.onload = () => {
+          const ratio = img.height / img.width;
+          panel.style.height = `${panel.offsetWidth * ratio}px`;
+        };
+      });
+    }
+
+    // Initial adjustment
+    adjustPanelHeights();
+
+    // Adjust on window resize
+    window.addEventListener('resize', adjustPanelHeights);
+
+    // Disable right click
+    document.addEventListener("contextmenu", e => e.preventDefault());
+
+    // Prevent double-tap zoom
+    let lastTouchEnd = 0;
+    document.addEventListener('touchend', event => {
+      const now = Date.now();
+      if (now - lastTouchEnd <= 300) event.preventDefault();
+      lastTouchEnd = now;
+    }, false);
   </script>
-  
+
 </body>
 </html>

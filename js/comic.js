@@ -1,109 +1,92 @@
-function getChapterFromURL() {
-  const params = new URLSearchParams(window.location.search);
-  return params.get("chapter");
+// comic.js
+
+// Get chapter ID from URL
+const params = new URLSearchParams(window.location.search);
+let chapterId = params.get("chapter");
+
+// If no chapter specified (index.html), default to chapter01
+if (!chapterId) chapterId = "chapter01";
+
+// Find chapter data
+const chapterIndex = CHAPTERS.findIndex(c => c.id === chapterId);
+if (chapterIndex === -1) {
+  console.error("Chapter not found:", chapterId);
+  throw new Error("Chapter not found");
+}
+const chapter = CHAPTERS[chapterIndex];
+
+// Container where panels will be added
+const container = document.getElementById('chapter-container') || document.getElementById(`${chapterId}-container`);
+
+// Create panels dynamically
+for (let i = 1; i <= chapter.count; i++) {
+  const num = String(i).padStart(3, '0');
+  const panel = document.createElement('div');
+  panel.className = 'panel';
+  panel.style.backgroundImage = `url('${chapter.folder}/${chapter.prefix}${num}.jpg')`;
+
+  // Resize based on image aspect ratio
+  const img = new Image();
+  img.src = `${chapter.folder}/${chapter.prefix}${num}.jpg`;
+  img.onload = () => {
+    const ratio = img.height / img.width;
+    panel.style.height = `${panel.offsetWidth * ratio}px`;
+    panel.classList.add('loaded'); // fade-in effect
+  };
+
+  container.appendChild(panel);
 }
 
-function getChapterData(id) {
-  return CHAPTERS.find(ch => ch.id === id);
-}
-
+// -------------------
+// Navigation
+// -------------------
 function createNav(currentIndex) {
   const nav = document.createElement('div');
   nav.className = 'chapter-nav';
 
-  if (currentIndex > 0) {
-    const prev = CHAPTERS[currentIndex - 1];
-    
-    if (currentIndex - 1 === 0) {
-      // 👈 Go back to index (Chapter 1)
-      nav.innerHTML += `<a href="index.html" class="nav-button previous">← Previous</a>`;
-    } else {
-      nav.innerHTML += `<a href="chapter.html?chapter=${prev.id}" class="nav-button previous">← Previous</a>`;
-    }
-    
-  }
+  const chapter = CHAPTERS[currentIndex];
+  let buttons = 0;
 
-  if (currentIndex < CHAPTERS.length - 1) {
-    const next = CHAPTERS[currentIndex + 1];
-    nav.innerHTML += `<a href="chapter.html?chapter=${next.id}" class="nav-button">Next →</a>`;
+  // Special single button (first or last chapter)
+  if (chapter.endLink) {
+    nav.innerHTML = `<a href="${chapter.endLink}" class="nav-button" target="_blank" rel="noopener">${chapter.endButtonText}</a>`;
+    nav.classList.add('single');
+    buttons = 1;
+  } else {
+    // Previous button
+    if (currentIndex > 0) {
+      const prev = CHAPTERS[currentIndex - 1];
+      const prevHref = (currentIndex - 1 === 0) ? 'index.html' : `chapter.html?chapter=${prev.id}`;
+      nav.innerHTML += `<a href="${prevHref}" class="nav-button previous">← Previous</a>`;
+      buttons++;
+    }
+
+    // Next button
+    if (currentIndex < CHAPTERS.length - 1) {
+      const next = CHAPTERS[currentIndex + 1];
+      nav.innerHTML += `<a href="chapter.html?chapter=${next.id}" class="nav-button">Next →</a>`;
+      buttons++;
+    }
+
+    // Center if only one button
+    if (buttons === 1) nav.classList.add('single');
   }
 
   return nav;
 }
 
-function loadChapter() {
-  const container = document.getElementById('chapter-container');
-  const chapterId = getChapterFromURL();
+// Append navigation after panels
+const nav = createNav(chapterIndex);
+container.parentNode.appendChild(nav);
 
-  const chapterIndex = CHAPTERS.findIndex(c => c.id === chapterId);
-  const chapter = CHAPTERS[chapterIndex];
+// -------------------
+// Disable right-click and double-tap zoom
+// -------------------
+document.addEventListener("contextmenu", e => e.preventDefault());
 
-  if (!chapter) {
-    container.innerHTML = "<p>Chapter not found</p>";
-    return;
-  }
-
-  document.title = chapter.title;
-
-  // PRELOAD FIRST PANELS
-  const preloadCount = 3;
-
-  for (let i = 1; i <= preloadCount; i++) {
-    const num = String(i).padStart(3, '0');
-    const src = `${chapter.folder}/${chapter.prefix}${num}.jpg`;
-
-    const panel = document.createElement('div');
-    panel.className = 'panel';
-
-    const img = new Image();
-    img.src = src;
-
-    img.onload = () => {
-      const ratio = img.height / img.width;
-      panel.style.height = `${container.offsetWidth * ratio}px`;
-      panel.style.backgroundImage = `url('${src}')`;
-      panel.classList.add('loaded');
-    };
-
-    container.appendChild(panel);
-  }
-
-  // LAZY LOAD REST
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (!entry.isIntersecting) return;
-
-      const panel = entry.target;
-      const src = panel.dataset.src;
-
-      const img = new Image();
-      img.src = src;
-
-      img.onload = () => {
-        const ratio = img.height / img.width;
-        panel.style.height = `${panel.offsetWidth * ratio}px`;
-        panel.style.backgroundImage = `url('${src}')`;
-        panel.classList.add('loaded');
-      };
-
-      observer.unobserve(panel);
-    });
-  }, { rootMargin: "200px" });
-
-  for (let i = preloadCount + 1; i <= chapter.count; i++) {
-    const num = String(i).padStart(3, '0');
-    const src = `${chapter.folder}/${num}.jpg`;
-
-    const panel = document.createElement('div');
-    panel.className = 'panel';
-    panel.dataset.src = src;
-
-    container.appendChild(panel);
-    observer.observe(panel);
-  }
-
-  // NAVIGATION
-  container.after(createNav(chapterIndex));
-}
-
-document.addEventListener("DOMContentLoaded", loadChapter);
+let lastTouchEnd = 0;
+document.addEventListener('touchend', event => {
+  const now = Date.now();
+  if (now - lastTouchEnd <= 300) event.preventDefault();
+  lastTouchEnd = now;
+}, false);

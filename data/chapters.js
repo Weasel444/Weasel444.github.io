@@ -46,6 +46,8 @@ const CHAPTERS = [
     title: "Chapter 07",
     folder: "Chapter 07",
     prefix: "Chapter 07_",
-    count: 31
+    count: 31,
+    endLink: "https://www.patreon.com/desmira", // special single button link
+    endButtonText: "Go to Patreon"              // text for that button
   }
 ];

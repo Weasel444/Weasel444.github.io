@@ -43,7 +43,7 @@ function loadChapter() {
 
   for (let i = 1; i <= preloadCount; i++) {
     const num = String(i).padStart(3, '0');
-    const src = `${chapter.folder}/${num}.jpg`;
+    const src = `${chapter.folder}/${chapter.prefix}${num}.jpg`;
 
     const panel = document.createElement('div');
     panel.className = 'panel';

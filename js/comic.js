@@ -13,7 +13,14 @@ function createNav(currentIndex) {
 
   if (currentIndex > 0) {
     const prev = CHAPTERS[currentIndex - 1];
-    nav.innerHTML += `<a href="chapter.html?chapter=${prev.id}" class="nav-button previous">← Previous</a>`;
+    
+    if (currentIndex - 1 === 0) {
+      // 👈 Go back to index (Chapter 1)
+      nav.innerHTML += `<a href="index.html" class="nav-button previous">← Previous</a>`;
+    } else {
+      nav.innerHTML += `<a href="chapter.html?chapter=${prev.id}" class="nav-button previous">← Previous</a>`;
+    }
+    
   }
 
   if (currentIndex < CHAPTERS.length - 1) {

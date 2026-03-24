@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <!-- LOCK ZOOM -->
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+  <title>Chapter 02</title>
+
+  <!-- GOOGLE FONT: LATO REGULAR + BOLD -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+  
+  <!-- AGE POPUP STYLES -->
+  <link rel="stylesheet" href="age-pop-up-style.css?v=9">
+
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: white;
+
+      font-family: 'Lato', sans-serif;
+      font-weight: 400;
+
+      /* Disable zoom gestures, allow vertical scroll */
+      touch-action: pan-y;
+
+      /* Disable selection & long-press */
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+      -webkit-touch-callout: none;
+    }
+
+    .comic {
+      max-width: 480px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    /* Each panel is one image */
+    .panel {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+
+      background-size: contain;
+      background-position: center top;
+      background-repeat: no-repeat;
+      background-color: black;
+    }
+
+    /* Chapter navigation (prev / next) */
+    .chapter-nav {
+      display: flex;
+      gap: 12px;
+      margin: 0px auto 60px;
+      max-width: 480px;
+    }
+
+    .nav-button {
+      flex: 1;
+      padding: 18px 0;
+
+      text-align: center;
+      text-decoration: none;
+      font-size: 18px;
+      font-weight: 700; /* Bold */
+
+      background-color: #50528d;
+      color: white;
+      border-radius: 6px;
+
+      -webkit-tap-highlight-color: transparent;
+      transition: opacity 0.2s ease;
+    }
+
+    .nav-button:hover {
+      opacity: 0.85;
+    }
+
+    /* Less bright Previous button */
+    .nav-button.previous {
+      background-color: #3e406f; /* Slightly darker / softer */
+      opacity: 0.85;
+    }
+
+    .nav-button.previous:hover {
+      opacity: 0.75;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="comic">
+    <div id="chapter02-container"></div>
+    
+    <script>
+      const container = document.getElementById('chapter02-container');
+      const totalImages = 44;
+    
+      for (let i = 1; i <= totalImages; i++) {
+        // Pad the number to 3 digits, e.g., 001, 002
+        const num = String(i).padStart(3, '0');
+    
+        // Create a div element
+        const panel = document.createElement('div');
+        panel.className = 'panel';
+        panel.style.backgroundImage = `url('Chapter 02/Chapter 02_${num}.jpg')`;
+    
+        // Append it to the container
+        container.appendChild(panel);
+      }
+    </script>
+    
+    <!-- PREVIOUS / NEXT NAVIGATION -->
+    <div class="chapter-nav">
+      <a href="index.html" class="nav-button previous">
+        ← Previous
+      </a>
+
+      <a href="chapter03.html" class="nav-button">
+        Next →
+      </a>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener("contextmenu", function(e) {
+      e.preventDefault();
+    });
+
+    let lastTouchEnd = 0;
+    document.addEventListener('touchend', function (event) {
+      const now = Date.now();
+      if (now - lastTouchEnd <= 300) {
+        event.preventDefault();
+      }
+      lastTouchEnd = now;
+    }, false);
+  </script>
+
+  <!-- AGE POPUP SCRIPT -->
+  <script src="age-gate.js"></script>
+
+  <!-- SCRIPT TO ADJUST PANEL HEIGHTS -->
+  <script>
+    document.querySelectorAll('.panel').forEach(panel => {
+      const img = new Image();
+      img.src = panel.style.backgroundImage.slice(5, -2); // remove url("…")
+      img.onload = () => {
+        const ratio = img.height / img.width;
+        panel.style.height = `${panel.offsetWidth * ratio}px`;
+      };
+    });
+  </script>
+  
+</body>
+</html>

@@ -1,26 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<script src="data/chapters.js"></script>
 
-<script>
-(function () {
-  const params = new URLSearchParams(window.location.search);
-  const chapterId = params.get("chapter") || "chapter01";
-
-  const chapter = CHAPTERS.find(c => c.id === chapterId);
-  if (!chapter) return;
-
-  for (let i = 1; i <= 3; i++) {
-    const num = String(i).padStart(3, '0');
-    const link = document.createElement("link");
-    link.rel = "preload";
-    link.as = "image";
-    link.href = `${chapter.folder}/${chapter.prefix}${num}.jpg`;
-    document.head.appendChild(link);
-  }
-})();
-</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 

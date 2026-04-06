@@ -45,20 +45,15 @@
     /* Each panel is one image */
     .panel {
       width: 100%;
-    //  aspect-ratio: 1 / 1;
-
+   //   aspect-ratio: 1 / 1;
+      margin: 0;
+      padding: 0;
+      display: block; /* ensure no vertical-align issues */
+      line-height: 0; /* prevents extra spacing */
       background-size: contain;
       background-position: center top;
       background-repeat: no-repeat;
       //background-color: black;
-    }
-
-    /* Chapter navigation (prev / next) */
-    .chapter-nav {
-      display: flex;
-      gap: 12px;
-      margin: 0px auto 60px;
-      max-width: 480px;
     }
 
     .nav-button {
@@ -154,7 +149,8 @@
       img.src = panel.style.backgroundImage.slice(5, -2); // remove url("…")
       img.onload = () => {
         const ratio = img.height / img.width;
-        panel.style.height = `${panel.offsetWidth * ratio}px`;
+        panel.style.height = `${Math.round(panel.offsetWidth * ratio)}px`;
+        panel.style.marginBottom = '-1px';
       };
     });
   </script>

@@ -19,15 +19,12 @@
 .panel{
   max-width: 100%;
   height: auto;
-  margin: auto;
+  margin: 0;
   padding: 0;
   display: block;
   line-height: 0;
   object-fit: contain
 }
-//.panel img{
-//  width: 350px;
-//}
 .next-chapter {
   display: inline-block;
   margin: 0px auto 60px;

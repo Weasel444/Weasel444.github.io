@@ -24,13 +24,36 @@
     <div class="panel">
       <img src="Chapter 01/Chapter 01_003.jpg">
     </div>
+    <div class="panel">
+      <img src="Chapter 01/Chapter 01_004.jpg">
+    </div>
   </div>
 
-    <!-- AGE POPUP SCRIPT -->
+  <!-- NEXT CHAPTER LINK -->
+    <a href="chapter02.html" class="next-chapter">
+      Next Chapter →
+    </a>
+  </div>
+
+  <!-- AGE POPUP SCRIPT -->
   <script src="age-gate.js"></script>
 
+  <script>
+    // Disable right-click / long-press menu
+    document.addEventListener("contextmenu", function(e) {
+      e.preventDefault();
+    });
+
+    // Disable double-tap zoom (iOS Safari)
+    let lastTouchEnd = 0;
+    document.addEventListener('touchend', function (event) {
+      const now = Date.now();
+      if (now - lastTouchEnd <= 300) {
+        event.preventDefault();
+      }
+      lastTouchEnd = now;
+    }, false);
+  </script>
   
 </body>
 </html>
-
-

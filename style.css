@@ -3,9 +3,9 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
 
-{
+html, body {
   margin: 0;
-  padding 0;
+  padding: 0;
   background: white;
   font-family: 'Lato', sans-serif;
   font-weight: 400;
@@ -20,6 +20,7 @@
   max-width: 480px;
   margin: 0 auto;
   text-align: center;
+  line-height: 0;
   /* Disable selection & long-press */
   -webkit-user-select: none;
   -moz-user-select: none;

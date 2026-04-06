@@ -45,7 +45,7 @@
     /* Each panel is one image */
     .panel {
       width: 100%;
-      aspect-ratio: 1 / 1;
+   //   aspect-ratio: 1 / 1;
 
       background-size: contain;
       background-position: center top;
@@ -166,17 +166,17 @@
   <!-- AGE POPUP SCRIPT -->
   <script src="age-gate.js"></script>
 
-  //<!-- SCRIPT TO ADJUST PANEL HEIGHTS -->
-  //<script>
-  //  document.querySelectorAll('.panel').forEach(panel => {
-  //    const img = new Image();
-  //    img.src = panel.style.backgroundImage.slice(5, -2); // remove url("…")
-  //    img.onload = () => {
-  //      const ratio = img.height / img.width;
-  //      panel.style.height = `${panel.offsetWidth * ratio}px`;
-  //    };
-  //  });
-  //</script>
+  <!-- SCRIPT TO ADJUST PANEL HEIGHTS -->
+  <script>
+    document.querySelectorAll('.panel').forEach(panel => {
+      const img = new Image();
+      img.src = panel.style.backgroundImage.slice(5, -2); // remove url("…")
+      img.onload = () => {
+        const ratio = img.height / img.width;
+        panel.style.height = `${panel.offsetWidth * ratio}px`;
+      };
+    });
+  </script>
 
 </body>
 </html>

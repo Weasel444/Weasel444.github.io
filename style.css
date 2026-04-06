@@ -18,15 +18,11 @@
 }
 .panel{
   width: 100%;
-  height: auto;
   margin: 0;
   padding: 0;
   line-height: 0;
-  //display: block;
-  //object-fit: contain
-  background-size: contain;
-  background-position: center top;
-  background-repeat: no-repeat;
+  display: block;
+  object-fit: contain
 }
 .next-chapter {
   display: inline-block;

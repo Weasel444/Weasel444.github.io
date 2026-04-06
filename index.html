@@ -2,7 +2,10 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
+
+  <!-- LOCK ZOOM -->
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
   <title>Chapter 01</title>
 
@@ -41,15 +44,16 @@
 
     /* Each panel is one image */
     .panel {
-      max-width: 100%;
-      height: auto;
+      width: 100%;
+   //   aspect-ratio: 1 / 1;
       margin: 0;
       padding: 0;
       display: block; /* ensure no vertical-align issues */
       line-height: 0; /* prevents extra spacing */
-      background-size: contain; /* change to cover? */
+      background-size: contain;
       background-position: center top;
       background-repeat: no-repeat;
+      //background-color: black;
     }
 
     /* NEXT CHAPTER BUTTON */
@@ -170,6 +174,10 @@
     document.querySelectorAll('.panel').forEach(panel => {
       const img = new Image();
       img.src = panel.style.backgroundImage.slice(5, -2); // remove url("…")
+      img.onload = () => {
+        const ratio = img.height / img.width;
+        panel.style.height = `${Math.round(panel.offsetWidth * ratio)}px`;
+        panel.style.marginBottom = '-1px';
       };
     });
   </script>

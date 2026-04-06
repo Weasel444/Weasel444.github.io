@@ -18,7 +18,7 @@ html, body {
 .comic{
   width: 100%;
   max-width: 480px;
-  margin: 0 auto;
+  margin: 0;
   text-align: center;
   line-height: 0;
   /* Disable selection & long-press */

@@ -172,9 +172,9 @@
       const img = new Image();
       img.src = panel.style.backgroundImage.slice(5, -2); // remove url("…")
       img.onload = () => {
-      const ratio = img.height / img.width;
-      panel.style.height = `${panel.offsetWidth * ratio}px`;
-      panel.style.marginBottom = `-1px`;
+        const ratio = img.height / img.width;
+        panel.style.height = `${panel.offsetWidth * ratio}px`;
+        panel.style.marginBottom = `-1px`;
       };
     });
   </script>

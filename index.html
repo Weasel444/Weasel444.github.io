@@ -177,6 +177,7 @@
       img.onload = () => {
         const ratio = img.height / img.width;
         panel.style.height = `${Math.round(panel.offsetWidth * ratio)}px`;
+        panel.style.marginBottom = '-1px';
       };
     });
   </script>

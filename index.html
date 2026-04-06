@@ -38,24 +38,19 @@
 
     .comic {
       max-width: 480px;
-      margin: 0 auto;
+      margin: auto;
       text-align: center;
     }
 
     /* Each panel is one image */
     .panel {
-      width: 100%;
+      max-width: 100%;
       height: auto;
-   //   aspect-ratio: 1 / 1;
-      margin: 0;
+      margin: auto;
       padding: 0;
-      display: block; /* ensure no vertical-align issues */
-      line-height: 0; /* prevents extra spacing */
+      display: block;
+      line-height: 0;
       object-fit: contain
-      //background-size: contain;
-      //background-position: center top;
-      //background-repeat: no-repeat;
-      //background-color: black;
     }
 
     /* NEXT CHAPTER BUTTON */

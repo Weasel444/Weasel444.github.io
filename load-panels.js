@@ -3,7 +3,7 @@ function loadPanels(folder, baseName, totalImages, extension) {
 
   for (let i = 1; i <= totalImages; i++) {
     const num = String(i).padStart(3, '0');
-    const path = `${encodeURI(folder)}/${encodeURI(baseName)}_${num}.${extension}`;
+    const path = `${folder}/${baseName}_${num}.${extension}`;
 
     const panel = document.createElement("div");
     panel.className = "panel";

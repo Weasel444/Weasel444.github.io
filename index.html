@@ -18,7 +18,9 @@
     <script src="load-panels.js" defer></script>
     <div id="panel-container"></div>
     <script>
-      loadPanels("Chapter 01", "Chapter 01", 58, "jpg");
+      window.addEventListener("DOMContentLoaded", () => {
+        loadPanels("Chapter 01", "Chapter 01", 58, "jpg");
+      });
     </script>
 
   <!-- NEXT CHAPTER LINK -->

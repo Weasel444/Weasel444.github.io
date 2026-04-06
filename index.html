@@ -7,6 +7,26 @@
   <meta name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
+  <script>
+    // Disable right-click / long-press menu
+    document.addEventListener("contextmenu", function(e) {
+      e.preventDefault();
+    });
+
+    // Disable double-tap zoom (iOS Safari)
+    let lastTouchEnd = 0;
+    document.addEventListener('touchend', function (event) {
+      const now = Date.now();
+      if (now - lastTouchEnd <= 300) {
+        event.preventDefault();
+      }
+      lastTouchEnd = now;
+    }, false);
+  </script>
+
+  <!-- AGE POPUP SCRIPT -->
+  <script src="age-gate.js"></script>
+
   <title>Chapter 01</title>
 
   <!-- GOOGLE FONT: LATO REGULAR + BOLD -->
@@ -21,7 +41,7 @@
     html, body {
       margin: 0;
       padding: 0;
-      background: white;
+      background: white; //keep this white, easier to spot image alignment issues + better for end section
 
       font-family: 'Lato', sans-serif;
       font-weight: 400;
@@ -45,7 +65,7 @@
     /* Each panel is one image */
     .panel {
       width: 100%;
-   //   aspect-ratio: 1 / 1;
+   //   aspect-ratio: 1 / 1; //this make it look nice for square images, both on mobile and pc, but breaks button placement when you use a non-square image
 
       background-size: contain;
       background-position: center top;
@@ -146,26 +166,6 @@
     </a>
   </div>
 
-  <script>
-    // Disable right-click / long-press menu
-    document.addEventListener("contextmenu", function(e) {
-      e.preventDefault();
-    });
-
-    // Disable double-tap zoom (iOS Safari)
-    let lastTouchEnd = 0;
-    document.addEventListener('touchend', function (event) {
-      const now = Date.now();
-      if (now - lastTouchEnd <= 300) {
-        event.preventDefault();
-      }
-      lastTouchEnd = now;
-    }, false);
-  </script>
-
-  <!-- AGE POPUP SCRIPT -->
-  <script src="age-gate.js"></script>
-
   <!-- SCRIPT TO ADJUST PANEL HEIGHTS -->
   <script>
     document.querySelectorAll('.panel').forEach(panel => {
@@ -173,7 +173,8 @@
       img.src = panel.style.backgroundImage.slice(5, -2); // remove url("…")
       img.onload = () => {
         const ratio = img.height / img.width;
-        panel.style.height = `${panel.offsetWidth * ratio}px`;
+        panel.style.height = `${Math.ceil(panel.offsetWidth * ratio)}px`;
+        //panel.style.height = `${panel.offsetWidth * ratio}px`;
       };
     });
   </script>

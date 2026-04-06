@@ -94,12 +94,13 @@
         // Create a div element
         const panel = document.createElement('div');
         panel.className = 'panel';
-        panel.style.backgroundImage = `url('Chapter 01/Chapter 01_${num}.jpg')`;
+        background-image: url('Chapter 01/Chapter 01_${num}.jpg')`;
+        //panel.style.backgroundImage = `url('Chapter 01/Chapter 01_${num}.jpg')`;
         const img = new Image();
         img.src = panel.style.backgroundImage.slice(5, -2); // remove url("…")
         //img.onload = () => {
         //  const ratio = img.height / img.width;
-        //  panel.style.height = `${Math.round(panel.offsetWidth * ratio)}px`;
+        //  panel.style.height = `${panel.offsetWidth * ratio}px`;
         //};
     
         // Append it to the container

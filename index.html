@@ -7,26 +7,6 @@
   <meta name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
-  <script>
-    // Disable right-click / long-press menu
-    document.addEventListener("contextmenu", function(e) {
-      e.preventDefault();
-    });
-
-    // Disable double-tap zoom (iOS Safari)
-    let lastTouchEnd = 0;
-    document.addEventListener('touchend', function (event) {
-      const now = Date.now();
-      if (now - lastTouchEnd <= 300) {
-        event.preventDefault();
-      }
-      lastTouchEnd = now;
-    }, false);
-  </script>
-
-  <!-- AGE POPUP SCRIPT -->
-  <script src="age-gate.js"></script>
-
   <title>Chapter 01</title>
 
   <!-- GOOGLE FONT: LATO REGULAR + BOLD -->
@@ -41,7 +21,7 @@
     html, body {
       margin: 0;
       padding: 0;
-      background: white; //keep this white, easier to spot image alignment issues + better for end section
+      background: white;
 
       font-family: 'Lato', sans-serif;
       font-weight: 400;
@@ -65,7 +45,7 @@
     /* Each panel is one image */
     .panel {
       width: 100%;
-      aspect-ratio: 1 / 1; //this make it look nice for square images, both on mobile and pc, but breaks button placement when you use a non-square image
+   //   aspect-ratio: 1 / 1;
 
       background-size: contain;
       background-position: center top;
@@ -166,7 +146,27 @@
     </a>
   </div>
 
-  /* <!-- SCRIPT TO ADJUST PANEL HEIGHTS -->
+  <script>
+    // Disable right-click / long-press menu
+    document.addEventListener("contextmenu", function(e) {
+      e.preventDefault();
+    });
+
+    // Disable double-tap zoom (iOS Safari)
+    let lastTouchEnd = 0;
+    document.addEventListener('touchend', function (event) {
+      const now = Date.now();
+      if (now - lastTouchEnd <= 300) {
+        event.preventDefault();
+      }
+      lastTouchEnd = now;
+    }, false);
+  </script>
+
+  <!-- AGE POPUP SCRIPT -->
+  <script src="age-gate.js"></script>
+
+  <!-- SCRIPT TO ADJUST PANEL HEIGHTS -->
   <script>
     document.querySelectorAll('.panel').forEach(panel => {
       const img = new Image();
@@ -176,7 +176,7 @@
         panel.style.height = `${panel.offsetWidth * ratio}px`;
       };
     });
-  </script> */
+  </script>
 
 </body>
 </html>

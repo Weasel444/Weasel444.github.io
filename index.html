@@ -26,7 +26,6 @@
       font-family: 'Lato', sans-serif;
       font-weight: 400;
 
-      /* Disable zoom gestures, allow vertical scroll */
       touch-action: pan-y;
 
       /* Disable selection & long-press */
@@ -45,15 +44,13 @@
     /* Each panel is one image */
     .panel {
       width: 100%;
-   //   aspect-ratio: 1 / 1;
       margin: 0;
       padding: 0;
-      display: block; /* ensure no vertical-align issues */
-      line-height: 0; /* prevents extra spacing */
+      display: block;
+      line-height: 0;
       background-size: contain;
       background-position: center top;
       background-repeat: no-repeat;
-      //background-color: black;
     }
     
     /* BUTTON (BOLD) */
@@ -75,7 +72,7 @@
       transition: opacity 0.2s ease;
     }
 
-    .next-chapter:hover {
+    .nav-button:hover {
       opacity: 0.85;
     }
   </style>

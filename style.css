@@ -6,7 +6,7 @@
 html, body {
   margin: 0;
   padding: 0;
-  background: white;
+  background: blue;
   font-family: 'Lato', sans-serif;
   font-weight: 400;
   touch-action: pan-y;
@@ -29,6 +29,7 @@ html, body {
   -webkit-touch-callout: none;
 }
 .panel{
+  background: green;
   width: 100%;
   margin: 0;
   padding: 0;

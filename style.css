@@ -17,13 +17,16 @@
   text-align: center;
 }
 .panel{
-  max-width: 100%;
+  width: 100%;
   height: auto;
   margin: 0;
   padding: 0;
-  display: block;
   line-height: 0;
-  object-fit: contain
+  //display: block;
+  //object-fit: contain
+  background-size: contain;
+  background-position: center top;
+  background-repeat: no-repeat;
 }
 .next-chapter {
   display: inline-block;
@@ -42,3 +45,34 @@
 .next-chapter:hover {
   opacity: 0.85;
 }
+/* Chapter navigation (prev / next) */
+.chapter-nav {
+  display: flex;
+  gap: 12px;
+  margin: 0px auto 60px;
+  max-width: 480px;
+  }
+.nav-button {
+  flex: 1;
+  padding: 18px 0;
+  text-align: center;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: 700; /* Bold */
+  background-color: #50528d;
+  color: white;
+  border-radius: 6px;
+  -webkit-tap-highlight-color: transparent;
+  transition: opacity 0.2s ease;
+  }
+.nav-button:hover {
+  opacity: 0.85;
+  }
+/* Less bright Previous button */
+.nav-button.previous {
+  background-color: #3e406f; /* Slightly darker / softer */
+  opacity: 0.85;
+  }
+.nav-button.previous:hover {
+  opacity: 0.75;
+  }

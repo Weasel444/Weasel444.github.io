@@ -81,15 +81,25 @@
 <body>
 
   <div class="comic">
-    <div class="panel">
-      <img src="Chapter 01/Chapter 01_001.jpg">
-      <img src="Chapter 01/Chapter 01_002.jpg">
-      <img src="Chapter 01/Chapter 01_003.jpg">
-    </div>
-  </div>
-      
-    //<div class="panel" style="background-image: url('Chapter 01/Chapter 01_001.jpg');"></div>
-    //<div class="panel" style="background-image: url('Chapter 01/Chapter 01_058.jpg');"></div> 
+    <div id="chapter01-container"></div>
+    
+    <script>
+      const container = document.getElementById('chapter01-container');
+      const totalImages = 58;
+    
+      for (let i = 1; i <= totalImages; i++) {
+        // Pad the number to 3 digits, e.g., 001, 002
+        const num = String(i).padStart(3, '0');
+    
+        // Create a div element
+        const panel = document.createElement('div');
+        panel.className = 'panel';
+        panel.style.backgroundImage = `url('Chapter 01/Chapter 01_${num}.jpg')`;
+    
+        // Append it to the container
+        container.appendChild(panel);
+      }
+    </script>
 
     <!-- NEXT CHAPTER LINK -->
     <a href="chapter02.html" class="next-chapter">

@@ -5,7 +5,7 @@ function loadPanels(folder, baseName, totalImages, extension) {
     const num = String(i).padStart(3, '0');
     
     const img = document.createElement("img");
-    img.src = `${folder}/${baseName}_${num}.${extension}`;
+    img.src = `${encodeURI(folder)}/${encodeURI(baseName)}_${num}.${extension}`;
     img.className = "panel";
         
     container.appendChild(img);

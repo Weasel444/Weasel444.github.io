@@ -8,7 +8,7 @@ function loadPanels(folder, baseName, totalImages, extension) {
     panel.className = "panel";
 
     const path = `${encodeURI(folder)}/${encodeURI(baseName)}_${num}.${extension}`;
-    panel.style.backgroundImage = `url("${path}")`;
+    panel.style.backgroundImage = `url("${encodeURI(path)}")`;
 
     container.appendChild(panel);
   }

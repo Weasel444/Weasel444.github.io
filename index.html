@@ -120,16 +120,16 @@
 
   <!-- SCRIPT TO ADJUST PANEL HEIGHTS -->
   <script>
-    document.querySelectorAll('.panel').forEach(panel => {
-      const img = new Image();
-      img.src = panel.style.backgroundImage.slice(5, -2); // remove url("…")
-      img.onload = () => {
-        const ratio = img.height / img.width;
-        panel.style.height = `${Math.round(panel.offsetWidth * ratio)}px`;
-        panel.style.marginBottom = '-1px';
-      };
-    });
-  </script>
+  //  document.querySelectorAll('.panel').forEach(panel => {
+  //    const img = new Image();
+  //    img.src = panel.style.backgroundImage.slice(5, -2); // remove url("…")
+  //    img.onload = () => {
+  //      const ratio = img.height / img.width;
+  //      panel.style.height = `${Math.round(panel.offsetWidth * ratio)}px`;
+  //      panel.style.marginBottom = '-1px';
+  //    };
+  //  });
+  //</script>
   
 </body>
 </html>

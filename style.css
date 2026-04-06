@@ -27,13 +27,12 @@ html, body {
   user-select: none;
   -webkit-touch-callout: none;
 }
-.panel{
+.panel {
   width: 100%;
-  margin: 0;
-  padding: 0;
-  line-height: 0;
-  display: block;
-  object-fit: contain
+  height: 600px;
+  background-size: contain;
+  background-position: center top;
+  background-repeat: no-repeat;
   /* Disable selection & long-press */
   -webkit-user-select: none;
   -moz-user-select: none;

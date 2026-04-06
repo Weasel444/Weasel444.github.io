@@ -6,7 +6,6 @@
 html, body {
   margin: 0;
   padding: 0;
-  background: blue;
   font-family: 'Lato', sans-serif;
   font-weight: 400;
   touch-action: pan-y;
@@ -17,11 +16,11 @@ html, body {
   -webkit-touch-callout: none;
 }
 .comic{
+  width: 100%;
   max-width: 480px;
   margin: 0 auto;
   text-align: center;
   line-height: 0;
-  background: red;
   /* Disable selection & long-press */
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -29,7 +28,6 @@ html, body {
   -webkit-touch-callout: none;
 }
 .panel{
-  background: green;
   width: 100%;
   margin: 0;
   padding: 0;

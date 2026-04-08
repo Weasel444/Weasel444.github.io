@@ -1,0 +1,42 @@
+body {
+  margin: 0;
+  background: white;
+  overflow-x: hidden;
+  touch-action: manipulation; /* helps prevent zoom gestures */
+}
+
+/* Disable image selection + dragging */
+img {
+  width: 100%;
+  height: auto;
+  display: block;
+
+  user-select: none;
+  -webkit-user-drag: none;
+  pointer-events: none; /* blocks long-press save on many devices */
+}
+
+/* Navigation buttons container */
+#nav-buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 20px;
+}
+
+/* Button styling */
+.nav-btn {
+  flex: 1;
+  text-align: center;
+  padding: 14px;
+
+  font-family: 'Lato', sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+
+  color: white;
+  background-color: #50528d;
+  border-radius: 6px;
+
+  text-decoration: none;
+}

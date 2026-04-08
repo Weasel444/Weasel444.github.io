@@ -2,10 +2,9 @@ body {
   margin: 0;
   background: white;
   overflow-x: hidden;
-  touch-action: manipulation; /* helps prevent zoom gestures */
+  touch-action: manipulation;
 }
 
-/* Disable image selection + dragging */
 img {
   width: 100%;
   height: auto;
@@ -13,18 +12,21 @@ img {
 
   user-select: none;
   -webkit-user-drag: none;
-  pointer-events: none; /* blocks long-press save on many devices */
+  pointer-events: none;
 }
 
-/* Navigation buttons container */
-#nav-buttons {
+/* Bottom bar */
+#bottom-bar {
   display: flex;
-  justify-content: space-between;
   gap: 10px;
   padding: 20px;
 }
 
-/* Button styling */
+#nav-buttons {
+  display: flex;
+  flex: 1;
+}
+
 .nav-btn {
   flex: 1;
   text-align: center;
@@ -39,4 +41,24 @@ img {
   border-radius: 6px;
 
   text-decoration: none;
+  border: none;
+}
+
+/* Menu overlay */
+#menu-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(255,255,255,0.95);
+  display: none;
+  z-index: 2000;
+}
+
+#menu-content {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 40px 20px;
 }

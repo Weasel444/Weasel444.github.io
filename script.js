@@ -10,38 +10,26 @@
 
   const container = document.getElementById("chapter-container");
 
-  // --- PRELOAD FIRST 2 IMAGES ---
+  // Preload first 2 images
   for (let i = 1; i <= 2; i++) {
     const img = new Image();
     img.src = getImagePath(chapter, i);
   }
 
-  // --- LOAD ALL IMAGES ---
+  // Load images
   for (let i = 1; i <= chapter.count; i++) {
     const img = document.createElement("img");
-
     img.loading = (i <= 2) ? "eager" : "lazy";
     img.src = getImagePath(chapter, i);
-
     container.appendChild(img);
   }
 
-  // --- NAVIGATION ---
+  // Navigation (ONLY NEXT now)
   const nav = document.getElementById("nav-buttons");
 
-  // Chapter 01
-  if (chapterIndex === 0) {
+  if (chapterIndex < CHAPTERS.length - 1) {
     nav.appendChild(createButton("Next", getChapterLink(chapterIndex + 1)));
-  }
-
-  // Chapters 02–06
-  else if (chapterIndex < CHAPTERS.length - 1) {
-    nav.appendChild(createButton("Previous", getChapterLink(chapterIndex - 1)));
-    nav.appendChild(createButton("Next", getChapterLink(chapterIndex + 1)));
-  }
-
-  // Chapter 07
-  else {
+  } else {
     const btn = document.createElement("a");
     btn.className = "nav-btn";
     btn.textContent = "Go to Patreon";
@@ -50,8 +38,35 @@
     nav.appendChild(btn);
   }
 
+  // Menu toggle
+  const menuToggle = document.getElementById("menu-toggle");
+  const menuOverlay = document.getElementById("menu-overlay");
+  const menuContent = document.getElementById("menu-content");
 
-  // --- HELPERS ---
+  menuToggle.addEventListener("click", () => {
+    menuOverlay.style.display = "block";
+  });
+
+  menuOverlay.addEventListener("click", () => {
+    menuOverlay.style.display = "none";
+  });
+
+  // Build menu
+  CHAPTERS.forEach((c, index) => {
+    const btn = document.createElement("a");
+    btn.className = "nav-btn";
+    btn.textContent = `Chapter ${String(index + 1).padStart(2, '0')}`;
+    btn.href = `?chapter=${c.id}`;
+    menuContent.appendChild(btn);
+  });
+
+  const patreon = document.createElement("a");
+  patreon.className = "nav-btn";
+  patreon.textContent = "Go to Patreon";
+  patreon.href = "https://www.patreon.com/desmira";
+  patreon.target = "_blank";
+  menuContent.appendChild(patreon);
+
 
   function getImagePath(chapter, index) {
     const num = String(index).padStart(3, "0");

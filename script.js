@@ -64,7 +64,11 @@ if (chapterIndex < CHAPTERS.length - 1) {
   CHAPTERS.forEach((c, index) => {
     const btn = document.createElement("a");
     btn.className = "nav-btn";
-    btn.textContent = `Chapter ${String(index + 1).padStart(2, '0')}`;
+    btn.textContent = `chapter ${index + 1}`;
+
+    if (index === chapterIndex) {
+      btn.style.background = "#8D9CC7";
+    }
     btn.href = `?chapter=${c.id}`;
     menuContent.appendChild(btn);
   });

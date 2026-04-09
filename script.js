@@ -28,7 +28,7 @@ if (chapterIndex < CHAPTERS.length - 1) {
   // Load images
   for (let i = 1; i <= chapter.count; i++) {
     const img = document.createElement("img");
-    img.loading = (i <= 2) ? "eager" : "lazy";
+    img.loading = (i <= 3) ? "eager" : "lazy";
     img.src = getImagePath(chapter, i);
     container.appendChild(img);
   }

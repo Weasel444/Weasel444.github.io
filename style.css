@@ -45,10 +45,9 @@ img {
 }
 
 #menu-toggle {
-  aspect-ratio: 1 / 1;
+  aspect-ratio: 4 / 3;
   flex: 0 0 auto;
- /* override nav-btn behavior */
-  width: auto;
+
   display: flex;
   align-items: center;
   justify-content: center;

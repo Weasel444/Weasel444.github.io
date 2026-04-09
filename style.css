@@ -47,7 +47,8 @@ img {
 #menu-toggle {
   aspect-ratio: 1 / 1;
   flex: 0 0 auto;
-
+ /* override nav-btn behavior */
+  width: auto;
   display: flex;
   align-items: center;
   justify-content: center;

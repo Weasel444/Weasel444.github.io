@@ -64,7 +64,7 @@ if (chapterIndex < CHAPTERS.length - 1) {
   CHAPTERS.forEach((c, index) => {
     const btn = document.createElement("a");
     btn.className = "nav-btn";
-    btn.textContent = `chapter ${index + 1}`;
+    btn.textContent = `Chapter ${index + 1}`;
 
     if (index === chapterIndex) {
       btn.style.background = "#8D9CC7";

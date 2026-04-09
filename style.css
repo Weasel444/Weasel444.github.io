@@ -44,6 +44,15 @@ img {
   border: none;
 }
 
+#menu-toggle {
+  aspect-ratio: 1 / 1;
+  flex: 0 0 auto;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 /* Menu overlay */
 #menu-overlay {
   position: fixed;

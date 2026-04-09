@@ -45,7 +45,7 @@ img {
 }
 
 #menu-toggle {
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 1 / 1;
   flex: 0 0 auto;
 
   display: flex;

@@ -10,12 +10,21 @@
 
   const container = document.getElementById("chapter-container");
 
-  // Preload first 2 images
-  for (let i = 1; i <= 2; i++) {
-    const img = new Image();
-    img.src = getImagePath(chapter, i);
-  }
+  // Preload first 3 images of current chapter
+for (let i = 1; i <= 3; i++) {
+  const img = new Image();
+  img.src = getImagePath(chapter, i);
+}
 
+// Preload first 3 images of next chapter
+if (chapterIndex < CHAPTERS.length - 1) {
+  const nextChapter = CHAPTERS[chapterIndex + 1];
+
+  for (let i = 1; i <= 3; i++) {
+    const img = new Image();
+    img.src = getImagePath(nextChapter, i);
+  }
+}
   // Load images
   for (let i = 1; i <= chapter.count; i++) {
     const img = document.createElement("img");

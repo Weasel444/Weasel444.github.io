@@ -1,4 +1,6 @@
 (function () {
+
+  const params = new URLSearchParams(window.location.search);
   const chapterId = params.get("chapter") || "chapter01";
 
   const chapterIndex = CHAPTERS.findIndex(c => c.id === chapterId);
@@ -22,7 +24,7 @@
     container.appendChild(img);
   }
 
-  // Navigation (only Next / Patreon)
+  // Navigation (ONLY NEXT now)
   const nav = document.getElementById("nav-buttons");
 
   if (chapterIndex < CHAPTERS.length - 1) {
@@ -36,17 +38,15 @@
     nav.appendChild(btn);
   }
 
-  // Menu elements
+  // Menu toggle
   const menuToggle = document.getElementById("menu-toggle");
   const menuOverlay = document.getElementById("menu-overlay");
   const menuContent = document.getElementById("menu-content");
 
-  // Open menu
   menuToggle.addEventListener("click", () => {
     menuOverlay.style.display = "block";
   });
 
-  // Close menu (tap anywhere)
   menuOverlay.addEventListener("click", () => {
     menuOverlay.style.display = "none";
   });
@@ -55,14 +55,8 @@
   CHAPTERS.forEach((c, index) => {
     const btn = document.createElement("a");
     btn.className = "nav-btn";
-    btn.textContent = `chapter ${index + 1}`;
+    btn.textContent = `Chapter ${String(index + 1).padStart(2, '0')}`;
     btn.href = `?chapter=${c.id}`;
-
-    // Highlight current chapter
-    if (index === chapterIndex) {
-      btn.classList.add("active-chapter");
-    }
-
     menuContent.appendChild(btn);
   });
 
